@@ -16,10 +16,8 @@ def load(fname):
             global BD
             global idContact
             global lastNameOfListContacts
-            # загрузить из json
-            #fname='BD.json' #открываем файл
-            with open(fname, 'r', encoding='utf-8') as fh:  # открываем файл на чтение
-                BD = BD_local = json.load(fh)  # загружаем из файла данные в словарь data
+            with open(fname, 'r', encoding='utf-8') as fh:  
+                BD = BD_local = json.load(fh)  
             os.system('CLS')
             print('Контакты успешно загружены, чтобы продолжить нажите клавишу Enter')
             input()
@@ -32,10 +30,9 @@ def load(fname):
 
 
 def save(fname):
-            # сохранить в json
-            with open(fname, 'w', encoding='utf-8') as fh:  # открываем файл на запись
+            with open(fname, 'w', encoding='utf-8') as fh:  
                 fh.write(json.dumps(BD,
-                                    ensure_ascii=False))  # преобразовываем словарь data в unicode-строку и записываем в файл
+                                    ensure_ascii=False)) 
             os.system('CLS')
             print('Контакт успешно сохранен, чтобы продолжить нажите клавишу Enter')
             input()
@@ -581,27 +578,3 @@ def LoadMenu() :
 
 
 LoadMenu()
-
-#BD=[12345,True,"яблоко",{"Миша": [898981646,464654654] }]
-
-"""
-def load():
-            # загрузить из json
-            fname='BD.json' #открываем файл
-            with open(fname, 'r', encoding='utf-8') as fh:  # открываем файл на чтение
-                BD_local = json.load(fh)  # загружаем из файла данные в словарь data
-            print('БД успещно загружена')
-            return BD_local
-
-def save():
-            # сохранить в json
-            with open('BD.json', 'w', encoding='utf-8') as fh:  # открываем файл на запись
-                fh.write(json.dumps(BD,
-                                    ensure_ascii=False))  # преобразовываем словарь data в unicode-строку и записываем в файл
-            print('БД успещно сохранена')
-"""
-#save()
-
-
-#BDnew = load ()
-#print(BDnew)
