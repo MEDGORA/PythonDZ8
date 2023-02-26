@@ -256,52 +256,76 @@ def FindContact():
         MainMenu()
     if menuOption == 2 :
         os.system('CLS')
+        count = 0
         numbers = input('Введите номер: ')
         listOfKeys = list(BD.keys())
+        contactFind = False
         for i in range(len(BD.keys())) :
             key = str(listOfKeys[i])
             list1 = list(BD.get(key))
-            os.system('CLS')
-            if numbers in list1 :
+            list2 = []
+            for j in list1 :
+                try:
+                    list2.extend(j)
+                except TypeError:
+                    pass
+            if numbers in list2 :
                 print(BD.get(key))
-                print('Контакт найден, чтобы вернуться в меню нажите клавишу Enter')
-            else :
-                print('Такого контакта нет, чтобы вернуться в меню нажите клавишу Enter')
-            input()
-            os.system('CLS')
-            MainMenu()
+                count += 1
+                contactFind = True
+        if contactFind == True and count == 1:
+            print('Контакт найден, чтобы вернуться в меню нажите клавишу Enter')
+        elif contactFind == True and count > 1:
+            print('Контакты найдены, чтобы вернуться в меню нажите клавишу Enter')
+        else :
+            print('Такого контакта нет, чтобы вернуться в меню нажите клавишу Enter')
+        input()
+        os.system('CLS')
+        MainMenu()
     if menuOption == 3 :
+        count = 0
         os.system('CLS')
         city = input('Введите город: ')
         listOfKeys = list(BD.keys())
+        contactFind = False
         for i in range(len(BD.keys())) :
             key = str(listOfKeys[i])
             list1 = list(BD.get(key))
-            os.system('CLS')
             if city in list1 :
                 print(BD.get(key))
-                print('Контакт найден, чтобы вернуться в меню нажите клавишу Enter')
-            else :
-                print('Такого контакта нет, чтобы вернуться в меню нажите клавишу Enter')
-            input()
-            os.system('CLS')
-            MainMenu()
+                count += 1
+                contactFind = True
+        if contactFind == True and count == 1:
+            print('Контакт найден, чтобы вернуться в меню нажите клавишу Enter')
+        elif contactFind == True and count > 1:
+            print('Контакты найдены, чтобы вернуться в меню нажите клавишу Enter')
+        else :
+            print('Такого контакта нет, чтобы вернуться в меню нажите клавишу Enter')
+        input()
+        os.system('CLS')
+        MainMenu()
     if menuOption == 4 :
+        count = 0
         os.system('CLS')
         birthDay = input('Введите день рождения: ')
         listOfKeys = list(BD.keys())
+        contactFind = False
         for i in range(len(BD.keys())) :
             key = str(listOfKeys[i])
             list1 = list(BD.get(key))
-            os.system('CLS')
             if birthDay in list1 :
                 print(BD.get(key))
-                print('Контакт найден, чтобы вернуться в меню нажите клавишу Enter')
-            else :
-                print('Такого контакта нет, чтобы вернуться в меню нажите клавишу Enter')
-            input()
-            os.system('CLS')
-            MainMenu()
+                count += 1
+                contactFind = True
+        if contactFind == True and count == 1:
+            print('Контакт найден, чтобы вернуться в меню нажите клавишу Enter')
+        elif contactFind == True and count > 1:
+            print('Контакты найдены, чтобы вернуться в меню нажите клавишу Enter')
+        else :
+            print('Такого контакта нет, чтобы вернуться в меню нажите клавишу Enter')
+        input()
+        os.system('CLS')
+        MainMenu()
     elif menuOption == 0 :
         os.system('CLS')
         MainMenu()
