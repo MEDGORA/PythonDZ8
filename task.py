@@ -34,7 +34,7 @@ def save(fname):
                 fh.write(json.dumps(BD,
                                     ensure_ascii=False)) 
             os.system('CLS')
-            print('Контакт успешно сохранен, чтобы продолжить нажите клавишу Enter')
+            print('Изменения успешно сохранены, чтобы продолжить нажите клавишу Enter')
             input()
             os.system('CLS')
             MainMenu()
@@ -189,10 +189,16 @@ def MainMenu() :
         birthDay = None
         AddContact()
     elif menuOption == 2 :
+        with open(lastNameOfListContacts, 'r', encoding='utf-8') as fh: 
+            BD = BD_local = json.load(fh)  
         ChangeContact()
     elif menuOption == 3 :
+        with open(lastNameOfListContacts, 'r', encoding='utf-8') as fh: 
+            BD = BD_local = json.load(fh)  
         DeleteContact()
     elif menuOption == 4 :
+        with open(lastNameOfListContacts, 'r', encoding='utf-8') as fh: 
+            BD = BD_local = json.load(fh)  
         FindContact()
     elif idContact != 0 and menuOption == 5 :
         with open(lastNameOfListContacts, 'r', encoding='utf-8') as fh: 
@@ -238,7 +244,7 @@ def FindContact():
         for i in range(len(BD.keys())) :
             key = str(listOfKeys[i])
             list1 = list(BD.get(key))
-            if name in list1 :
+            if name in list1[0] :
                 print(BD.get(key))
                 count += 1
                 contactFind = True
@@ -288,7 +294,7 @@ def FindContact():
         for i in range(len(BD.keys())) :
             key = str(listOfKeys[i])
             list1 = list(BD.get(key))
-            if city in list1 :
+            if city in list1[-2] :
                 print(BD.get(key))
                 count += 1
                 contactFind = True
@@ -310,7 +316,7 @@ def FindContact():
         for i in range(len(BD.keys())) :
             key = str(listOfKeys[i])
             list1 = list(BD.get(key))
-            if birthDay in list1 :
+            if birthDay in list1[-1] :
                 print(BD.get(key))
                 count += 1
                 contactFind = True
@@ -393,7 +399,7 @@ def ChangeContact():
         key = str(listOfKeys[i])
         print(i + 1,'-',BD.get(key))
         count.append(i)
-    menuOption = int(input('Выберите контакт, который нужно изменить: '))
+    menuOption = int(input('Введите номер контакта, который нужно изменить: '))
     if menuOption - 1 in count :
         for i in range(len(BD.keys())) :
             if menuOption == i + 1 :
