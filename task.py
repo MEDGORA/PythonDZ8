@@ -30,6 +30,7 @@ def load(fname):
 
 
 def save(fname):
+            global lastNameOfListContacts
             with open(fname, 'w', encoding='utf-8') as fh:  
                 fh.write(json.dumps(BD,
                                     ensure_ascii=False)) 
@@ -37,6 +38,7 @@ def save(fname):
             print('Изменения успешно сохранены, чтобы продолжить нажите клавишу Enter')
             input()
             os.system('CLS')
+            lastNameOfListContacts = fname
             MainMenu()
 
 
@@ -399,7 +401,7 @@ def ChangeContact():
         key = str(listOfKeys[i])
         print(i + 1,'-',BD.get(key))
         count.append(i)
-    menuOption = int(input('Введите номер контакта, который нужно изменить: '))
+    menuOption = int(input('Выберите контакт, который нужно изменить: '))
     if menuOption - 1 in count :
         for i in range(len(BD.keys())) :
             if menuOption == i + 1 :
@@ -480,7 +482,7 @@ def ChangeContactMenu():
         numbers = None
         city = None
         birthDay = None
-        LoadMenu()
+        MainMenu()
     if menuOption == 1 :
         os.system('CLS')
         name = input('Введите имя контакта: ')
@@ -496,10 +498,12 @@ def ChangeContactMenu():
             for i in range(len(numbers)) :
                 print(i + 1,'-',numbers[i])
                 count.append(i)
+            print(count)
             menuOption = int(input('Выберите номер, который нужно изменить: '))
+            menuOption -= 1
             if menuOption in count :
                 for i in range(len(numbers)) :
-                    if menuOption == i + 1 :
+                    if menuOption == i:
                         numbers[i] = input('Введите новый номер: ')
             else :
                 while menuOption not in count:
